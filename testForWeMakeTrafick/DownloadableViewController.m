@@ -33,6 +33,7 @@
 #pragma mark - Actions
 
 - (IBAction)refreshButton:(id)sender {
+    
     [[FileManager sharedManager] loadFilesFromServer];
     [_tableView reloadData];
 }
@@ -44,6 +45,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     return [[FileManager sharedManager] filesCount];
 }
 
@@ -61,7 +63,9 @@
 #pragma mark - FileManagerDelegate
 
 - (void)updatedFileState {
+    
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         [_tableView reloadData];
     });
 }

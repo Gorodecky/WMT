@@ -21,7 +21,7 @@
     
     if (self) {
         
-        self.fileName   = responseObject[@"name"];
+        self.fileName  = responseObject[@"name"];
         self.fileResponseURL = responseObject[@"url"];
         self.fileType = responseObject[@"type"];
         self.fileStatusType = fileNotDownload;
@@ -33,10 +33,12 @@
 - (NSString*)progressString {
     
     if (_fileStatusType == fileIsDoWnload) {
+        
         return @"Done";
     }
     
     if (_fileProgressDownload > 0) {
+        
         return [NSString stringWithFormat:@"%lu %%",lroundf(_fileProgressDownload)];
     }
     
